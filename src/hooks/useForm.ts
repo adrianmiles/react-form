@@ -4,13 +4,17 @@ import { FormSchema } from "../types/FormSchema";
 
 export function useForm(formSchema: FormSchema) {
   const [isValid, setIsValid] = useState(false);
-
-  const [fields, setFields] = useState(
-    formSchema.fields.reduce(function (result, item) {
+  const mapInitialFields = () => {
+    return formSchema.fields.reduce(function (result, item) {
       result[item.id] = null;
       return result;
-    }, {})
-  );
+    }, {});
+  };
+  const [fields, setFields] = useState(mapInitialFields());
+
+  const resetForm = () => {
+    setFields(mapInitialFields);
+  };
 
   useEffect(() => {
     const { fields: formFields } = formSchema;
@@ -40,5 +44,5 @@ export function useForm(formSchema: FormSchema) {
     });
   }
 
-  return { fields, onChange, isValid };
+  return { fields, onChange, isValid, resetForm };
 }
