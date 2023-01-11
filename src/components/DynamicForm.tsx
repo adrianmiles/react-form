@@ -33,7 +33,7 @@ const DynamicForm = ({
       className="p-10 bg-neutral-100 rounded text-[#071138]"
     >
       <h1 className="font-extrabold text-xl">{title}</h1>
-      {subtitle ? <h2 className="font-bold text-lg">{subtitle}</h2> : null}
+      {subtitle ? <h2 className="font-bold text-lg my-4">{subtitle}</h2> : null}
       <div>
         {fields.map((field) => {
           const isActiveInput =

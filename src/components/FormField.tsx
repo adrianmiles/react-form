@@ -48,7 +48,7 @@ const FormField = ({ value, onChange, formField }: FormFieldProps) => {
 
   return (
     <div>
-      <div>{formField.label}</div>
+      <div className="my-2 font-light">{formField.label}</div>
       <div>{generateFieldInput()}</div>
     </div>
   );
