@@ -20,6 +20,7 @@ const FormField = ({ value, onChange, formField }: FormFieldProps) => {
             onChange={onChange}
             value={value || ""}
             id={formField.id}
+            className="w-full h-10 p-2"
           />
         );
       case "select":
@@ -33,7 +34,12 @@ const FormField = ({ value, onChange, formField }: FormFieldProps) => {
         );
       case "textarea":
         return (
-          <textarea id={formField.id} onChange={onChange} value={value || ""} />
+          <textarea
+            className="w-full p-2"
+            id={formField.id}
+            onChange={onChange}
+            value={value || ""}
+          />
         );
       default:
         return <div>Error loading field</div>;

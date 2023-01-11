@@ -28,9 +28,12 @@ const DynamicForm = ({
 
   const { fields } = formSchema;
   return (
-    <form onSubmit={onSubmit}>
-      <h1>{title}</h1>
-      {subtitle ? <h2>{subtitle}</h2> : null}
+    <form
+      onSubmit={onSubmit}
+      className="p-10 bg-neutral-100 rounded text-[#071138]"
+    >
+      <h1 className="font-extrabold text-xl">{title}</h1>
+      {subtitle ? <h2 className="font-bold text-lg">{subtitle}</h2> : null}
       <div>
         {fields.map((field) => {
           const isActiveInput =
@@ -51,7 +54,16 @@ const DynamicForm = ({
           }
         })}
       </div>
-      <button disabled={!isValid}>Submit</button>
+      <div className="flex justify-center">
+        <button
+          className={`py-1 px-8 text-white rounded mt-8 ${
+            isValid ? "bg-[#143BB6] " : "bg-gray-300 cursor-not-allowed"
+          }`}
+          disabled={!isValid}
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 };

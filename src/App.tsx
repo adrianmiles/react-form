@@ -1,5 +1,5 @@
 import React from "react";
-import DynamicForm from "./components/Form";
+import DynamicForm from "./components/DynamicForm";
 import sample from "./data/sample.json";
 
 export function App() {
@@ -8,13 +8,15 @@ export function App() {
     alert("Form submitted");
   };
   return (
-    <div>
-      <DynamicForm
-        onSubmit={handleSubmit}
-        title={title}
-        subtitle={subtitle}
-        formSchema={sample.data}
-      />
+    <div className="bg-[#EBF1FC] min-h-full flex justify-center">
+      <div className="pt-10">
+        <DynamicForm
+          onSubmit={handleSubmit}
+          title={title}
+          subtitle={subtitle}
+          formSchema={sample.data}
+        />
+      </div>
     </div>
   );
 }

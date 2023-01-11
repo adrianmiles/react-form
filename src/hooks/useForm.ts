@@ -29,7 +29,7 @@ export function useForm(formSchema: FormSchema) {
       }
     });
     setIsValid(validCheck);
-  }, [fields]);
+  }, [fields, formSchema]);
 
   function onChange(event: { target: { id: any; value: any } }) {
     setFields((prev) => {
