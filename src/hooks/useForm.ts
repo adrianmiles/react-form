@@ -17,7 +17,7 @@ export function useForm(formSchema: FormSchema) {
     let validCheck = true;
 
     formFields.forEach((field) => {
-      const { validation, id, trigger } = field;
+      const { validation, trigger } = field;
       const isActiveInput =
         trigger?.triggerFieldValues.some(
           (fieldValue: Field) => fieldValue === fields[trigger?.triggerFieldId]
@@ -31,7 +31,7 @@ export function useForm(formSchema: FormSchema) {
     setIsValid(validCheck);
   }, [fields, formSchema]);
 
-  function onChange(event: { target: { id: any; value: any } }) {
+  function onChange(event: { target: { id: string; value: string } }) {
     setFields((prev) => {
       return {
         ...prev,

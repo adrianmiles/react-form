@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ChangeEvent } from "react";
 import { Field } from "../types/Field";
 import { FormFieldType } from "../types/FormFieldType";

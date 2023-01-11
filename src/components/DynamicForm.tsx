@@ -42,7 +42,7 @@ const DynamicForm = ({
             const isActiveInput =
               !field.trigger ||
               field.trigger?.triggerFieldValues?.some(
-                (fieldValue: any) =>
+                (fieldValue: unknown) =>
                   fieldValue === formFields[field.trigger?.triggerFieldId]
               );
             if (isActiveInput) {
