@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Field } from "../types/Field";
 import { FormSchema } from "../types/FormSchema";
 
 export function useForm(formSchema: FormSchema) {
@@ -16,8 +17,13 @@ export function useForm(formSchema: FormSchema) {
     let validCheck = true;
 
     formFields.forEach((field) => {
-      const { validation, id } = field;
-      if (validation?.required && !fields[field.id]) {
+      const { validation, id, trigger } = field;
+      const isActiveInput =
+        trigger?.triggerFieldValues.some(
+          (fieldValue: Field) => fieldValue === fields[trigger?.triggerFieldId]
+        ) || !trigger;
+
+      if (validation?.required && !fields[field.id] && isActiveInput) {
         validCheck = false;
         return;
       }

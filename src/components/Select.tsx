@@ -10,10 +10,10 @@ const Select = ({ options, onChange, value, id }: SelectProps) => {
     <div>Error rendering options: no options found</div>;
   }
   return (
-    <select onChange={onChange} value={value} id={id}>
+    <select onChange={onChange} value={value || ""} id={id}>
       <option value={""}>Please select an option</option>
       {options.map((option) => (
-        <option id={option.id} value={option.id}>
+        <option key={option.id} id={option.id} value={option.id}>
           {option.value}
         </option>
       ))}

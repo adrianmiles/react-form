@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useForm } from "../hooks/useForm";
 import { FormSchema } from "../types/FormSchema";
 import FormField from "./FormField";
@@ -7,9 +7,15 @@ type DynamicFormProps = {
   formSchema: FormSchema;
   title: string;
   subtitle?: string;
+  onSubmit: () => void;
 };
 
-const DynamicForm = ({ title, subtitle, formSchema }: DynamicFormProps) => {
+const DynamicForm = ({
+  title,
+  subtitle,
+  formSchema,
+  onSubmit,
+}: DynamicFormProps) => {
   const {
     fields: formFields,
     onChange: handleOnChange,
@@ -22,32 +28,18 @@ const DynamicForm = ({ title, subtitle, formSchema }: DynamicFormProps) => {
 
   const { fields } = formSchema;
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <h1>{title}</h1>
       {subtitle ? <h2>{subtitle}</h2> : null}
       <div>
         {fields.map((field) => {
-          // we can play around with these triggers
-
-          if (
-            field?.trigger?.triggerFieldId &&
-            field.trigger?.triggerFieldValues
-          ) {
-            const isTriggeredInput = field.trigger.triggerFieldValues.some(
-              (fieldValue) =>
-                fieldValue === formFields[field.trigger.triggerFieldId]
+          const isActiveInput =
+            !field.trigger ||
+            field.trigger?.triggerFieldValues?.some(
+              (fieldValue: any) =>
+                fieldValue === formFields[field.trigger?.triggerFieldId]
             );
-            if (isTriggeredInput) {
-              return (
-                <FormField
-                  onChange={handleOnChange}
-                  value={formFields[field.id]}
-                  formField={field}
-                  key={field.id}
-                />
-              );
-            }
-          } else {
+          if (isActiveInput) {
             return (
               <FormField
                 onChange={handleOnChange}
@@ -59,14 +51,7 @@ const DynamicForm = ({ title, subtitle, formSchema }: DynamicFormProps) => {
           }
         })}
       </div>
-      {isValid.toString()}
-      <div>
-        <button disabled={!isValid} type="button">
-          Submit
-        </button>
-        <span></span>
-      </div>
-      <div>Formfields {JSON.stringify(formFields)}</div>
+      <button disabled={!isValid}>Submit</button>
     </form>
   );
 };

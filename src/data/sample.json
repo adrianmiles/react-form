@@ -6,7 +6,7 @@
   "data": {
     "fields": [
       {
-        "id": 0,
+        "id": "0",
         "name": "enquiry",
         "label": "What does your enquiry relate to?",
         "placeholder": "Incorrect Pay / Missing Expense / Change of Bank Details / Change of Address / Other",
@@ -23,7 +23,7 @@
         }
       },
       {
-        "id": 1,
+        "id": "1",
         "name": "date",
         "label": "Date of payslip being queried (if applicable)",
         "placeholder": "Date of payslip being queried (if applicable)",
@@ -38,7 +38,7 @@
         }
       },
       {
-        "id": 2,
+        "id": "2",
         "name": "query",
         "label": "Query",
         "placeholder": "Incorrect Pay / Missing Expense / Change of Bank Details / Change of Address / Other",

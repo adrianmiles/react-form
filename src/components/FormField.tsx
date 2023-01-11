@@ -12,20 +12,29 @@ type FormFieldProps = {
 
 const FormField = ({ value, onChange, formField }: FormFieldProps) => {
   const generateFieldInput = () => {
-    switch (formField["type"] as FormFieldType) {
+    switch (formField.type as FormFieldType) {
       case "input":
-        return <input type={formField["format"]} />;
+        return (
+          <input
+            type={formField["format"]}
+            onChange={onChange}
+            value={value || ""}
+            id={formField.id}
+          />
+        );
       case "select":
         return (
           <Select
             onChange={onChange}
             value={value}
-            id={formField["id"]}
+            id={formField.id}
             options={formField["options"]}
           />
         );
       case "textarea":
-        return <textarea />;
+        return (
+          <textarea id={formField.id} onChange={onChange} value={value || ""} />
+        );
       default:
         return <div>Error loading field</div>;
     }
