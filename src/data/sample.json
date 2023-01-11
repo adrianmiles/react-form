@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "Payroll Enquiry",
+    "subtitle": "Please use this form for any Payroll related enquiries."
+  },
+  "data": {
+    "fields": [
+      {
+        "id": 0,
+        "name": "enquiry",
+        "label": "What does your enquiry relate to?",
+        "placeholder": "Incorrect Pay / Missing Expense / Change of Bank Details / Change of Address / Other",
+        "type": "select",
+        "options": [
+          { "id": 0, "value": "Incorrect Pay" },
+          { "id": 1, "value": "Missing Expense" },
+          { "id": 2, "value": "Change of Bank Details " },
+          { "id": 3, "value": " Change of Address " },
+          { "id": 4, "value": "Other" }
+        ],
+        "validation": {
+          "required": true
+        }
+      },
+      {
+        "id": 1,
+        "name": "date",
+        "label": "Date of payslip being queried (if applicable)",
+        "placeholder": "Date of payslip being queried (if applicable)",
+        "type": "input",
+        "format": "date",
+        "validation": {
+          "required": true
+        },
+        "trigger": {
+          "triggerFieldId": "0",
+          "triggerFieldValues": ["0", "1"]
+        }
+      },
+      {
+        "id": 2,
+        "name": "query",
+        "label": "Query",
+        "placeholder": "Incorrect Pay / Missing Expense / Change of Bank Details / Change of Address / Other",
+        "type": "textarea",
+        "validation": {
+          "required": true
+        }
+      }
+    ]
+  }
+}
