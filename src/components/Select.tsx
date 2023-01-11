@@ -2,8 +2,8 @@ import React, { ChangeEvent } from "react";
 type SelectProps = {
   options: { id: string; value: string }[];
   onChange: (e: ChangeEvent) => void;
-  value: any;
-  id: any;
+  value: string;
+  id: string;
 };
 const Select = ({ options, onChange, value, id }: SelectProps) => {
   if (!options) {
